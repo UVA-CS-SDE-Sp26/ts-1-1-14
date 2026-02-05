@@ -1,4 +1,4 @@
 COMMAND PROMPT OPTIONS:
 -Select file:
 -Exit out of file:
--Decipher file:
+-Decipher file: test
