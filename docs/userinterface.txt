@@ -1,2 +1,4 @@
 COMMAND PROMPT OPTIONS:
--
+-Open file:
+-Exit file:
+-Decipher text:
