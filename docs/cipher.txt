@@ -20,3 +20,8 @@ Pseudocode:
     worth checking if the same characters are in both strings provided.
     - We may be asked to decrypt a character that was not included in either key (like punctuation and such). We would
     need to handle that error.
+
+- Dependencies:
+    - In order for this process to function, the cypher file needs to be converted into text. This means that role B needs
+    to make a program that is able to read the data from a file, and role C should be able to take this data from the file
+    and then translate it to text.
