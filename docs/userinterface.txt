@@ -1,4 +1,21 @@
-COMMAND PROMPT OPTIONS:
--Select file:
--Exit out of file:
--Decipher file: test
+USER INTERFACE DOCUMENTATION:
+-----------------------------
+
+Options:
+1. List all available files:
+   Command: java topsecret
+   Description: Displays a numbered list of all available files.
+
+2. Read a specific file (Default Cipher Key)
+   Command: java topsecret [file_number]
+   Example: java topsecret 01
+   Description: Deciphers and displays the contents of the specified file using the default key.
+
+3. Read a specific file (Custom Key):
+   Command: java topsecret [file_number] [key]
+   Example: java topsecret 01 myCustomKey
+   Description: Deciphers and displays the contents of the file using the provided custom key.
+
+Error Handling:
+-If the file number does not exist, an error message "File not found." will be displayed.
+-If too many arguments are provided, the program will display usage instructions.
