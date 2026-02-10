@@ -1,0 +1,24 @@
+TESTS
+
+Cipher:
+- Have 3 tests to ensure cipher works as designed (happy path tests)
+- Test for edge case where invalid key is provided
+- Test for edge case where a cipher alphabet has more or less than a regular alphabet
+- Test for edge case where there's a character not present in the cipher
+- Test for null and empty string case
+FileHandler:
+- Have 3 tests to ensure file handler as designed (happy path tests)
+- Test for a file that doesn't exist
+- Test for a file with empty contents
+InterfaceBridge:
+- Have 3 tests to ensure text contents are returned from a file (happy path tests)
+- edge case if file not found
+- edge case if cipher is invalid
+- edge case if selection invalid
+- Have 3 tests to ensure files provided by FileHandler are displayed in a friendly manner (happy path tests)
+- edge case if file handler returns empty list
+
+UserInterface:
+- Have 3 tests to ensure user interface works as designed (happy path tests)
+- edge case if more than two args are passed
+- edge case if invalid format is passed "abc" instead of "01" for instance
