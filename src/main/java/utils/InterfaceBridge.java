@@ -1,16 +1,20 @@
 package utils;
 
-public class InterfaceBridge {
+import utils.contracts.CipherService;
+import utils.contracts.FileRepository;
+import utils.contracts.InterfaceBridgeService;
 
-    private final FileHandler fileHandler;
-    private final Cipher cipher;
+public class InterfaceBridge implements InterfaceBridgeService {
 
-    public InterfaceBridge(FileHandler fh, Cipher c) {
-        this.fileHandler = fh;
+    private final FileRepository fileRepo;
+    private final CipherService cipher;
+
+    public InterfaceBridge(FileRepository fr, CipherService c) {
+        this.fileRepo = fr;
         this.cipher = c;
     }
 
-    public String requestFileConents(String selection, String cipher) {
+    public String requestFileContents(String selection, String cipher) {
         return "";
     }
     public String getFilesForDisplay() {
