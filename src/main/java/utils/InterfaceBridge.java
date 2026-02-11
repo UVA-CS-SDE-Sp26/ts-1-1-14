@@ -15,9 +15,22 @@ public class InterfaceBridge implements InterfaceBridgeService {
     }
 
     public String requestFileContents(String selection, String cipher) {
-        return "";
+        String fileContents = fileRepo.readFileFromData(selection);
+        return this.cipher.decryptText(fileContents, cipher);
     }
+
     public String getFilesForDisplay() {
-       return "";
+        StringBuilder sb = new StringBuilder();
+        int count = 1;
+        for (String file : fileRepo.listFilesInData()) {
+            sb.append(String.format("%02d %s\n", count, file));
+            count++;
+        }
+
+        if (sb.isEmpty()) {
+            sb.append("No files found.\n");
+        }
+
+        return sb.toString();
     }
 }

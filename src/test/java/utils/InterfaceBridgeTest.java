@@ -116,6 +116,6 @@ public class InterfaceBridgeTest {
         when(fileRepo.listFilesInData()).thenReturn(new ArrayList<>());
 
         String result = bridge.getFilesForDisplay();
-        assertNotNull(result);
+        assertTrue(result.isEmpty() || result.toLowerCase().contains("no files"));
     }
 }
