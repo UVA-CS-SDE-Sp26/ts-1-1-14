@@ -1,7 +1,7 @@
 public class UserInterface {
 
     //Creates the bridge to use Lamin's code
-    private InterfaceBridge bridge;
+    private final InterfaceBridge bridge;
 
     public UserInterface(InterfaceBridge bridge) {
         this.bridge = bridge;
