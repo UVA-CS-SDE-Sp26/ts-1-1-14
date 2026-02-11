@@ -98,6 +98,21 @@ public class InterfaceBridgeTest {
     }
 
     @Test
+    void requestFileContents_emptyCipherUsesDefault() {
+        FileRepository fileRepo = mock(FileRepository.class);
+        CipherService cipher = mock(CipherService.class);
+        InterfaceBridge bridge = new InterfaceBridge(fileRepo, cipher);
+
+        when(fileRepo.readFileFromData("data.txt")).thenReturn("text");
+        when(cipher.decryptText(eq("text"), eq("key.txt"))).thenReturn("decrypted");
+
+        String result = bridge.requestFileContents("data.txt", null);
+        String result2 = bridge.requestFileContents("data.txt", "");
+        assertEquals("decrypted", result);
+        assertEquals("decrypted", result2);
+    }
+
+    @Test
     void requestFileContents_invalidSelection() {
         FileRepository fileRepo = mock(FileRepository.class);
         CipherService cipher = mock(CipherService.class);
