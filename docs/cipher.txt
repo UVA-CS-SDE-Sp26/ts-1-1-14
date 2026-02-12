@@ -1,0 +1,27 @@
+Pseudocode:
+
+
+-Setup:
+    - 1st, when provided the key file, store the 1st line as a string named as normalKey
+    - 2nd, when provided the key file, store the 2nd line as a string named as cypherKey
+
+
+- Method:
+    - decryptCharacter: this method will decrypt a single character with a return type of char. To do this, it will take
+    in the character intended to by decrypted (variable named as encryptedCharacter), the normalKey, and the cypherKey.
+    Then cypherKey.indexOf(encryptedCharacter) will be used to extract the index of the encrypted character and stored
+    into the variable indexLocation. Next, normalKey.charAt(indexLocation) will be used to find the decrypted character that
+    corresponds with the encrypted one.
+        - *** Note: Because this method only decrypts a single character at a time, a loop will be needed to decrypt
+        blocks of text. This would be easiest with a mutable string (StringBuilder) and .append()
+
+ - Exceptions:
+    - If the two cyphers are not the same length, then that means that we were given incomplete information. It may be
+    worth checking if the same characters are in both strings provided.
+    - We may be asked to decrypt a character that was not included in either key (like punctuation and such). We would
+    need to handle that error.
+
+- Dependencies:
+    - In order for this process to function, the cypher file needs to be converted into text. This means that role B needs
+    to make a program that is able to read the data from a file, and role C should be able to take this data from the file
+    and then translate it to text.
