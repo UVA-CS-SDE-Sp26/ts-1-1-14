@@ -11,11 +11,11 @@ FileHandler:
 - Test for a file that doesn't exist
 - Test for a file with empty contents
 InterfaceBridge:
-- Have 3 tests to ensure text contents are returned from a file (happy path tests)
+- Have 2 tests to ensure text contents are returned from a file (happy path tests)
 - edge case if file not found
 - edge case if cipher is invalid
 - edge case if selection invalid
-- Have 3 tests to ensure files provided by FileHandler are displayed in a friendly manner (happy path tests)
+- Have 2 tests to ensure files provided by FileHandler are displayed in a friendly manner (happy path tests)
 - edge case if file handler returns empty list
 
 UserInterface:
