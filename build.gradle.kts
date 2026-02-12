@@ -19,4 +19,6 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    //Configures the JVM to allow Mockito to work with Java 24 (Gemini created this to help my tests work)
+    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Dnet.bytebuddy.experimental=true")
 }
