@@ -9,12 +9,12 @@ Options:
 2. Read a specific file (Default Cipher Key)
    Command: java topsecret [file_number]
    Example: java topsecret 01
-   Description: Deciphers and displays the contents of the specified file using the default key.
+   Description: Deciphers and displays the contents of the specified file using the default key file.
 
 3. Read a specific file (Custom Key):
    Command: java topsecret [file_number] [key]
    Example: java topsecret 01 myCustomKey
-   Description: Deciphers and displays the contents of the file using the provided custom key.
+   Description: Deciphers and displays the contents of the file using the provided custom key file.
 
 Error Handling:
 -If the file number does not exist, an error message "File not found." will be displayed.

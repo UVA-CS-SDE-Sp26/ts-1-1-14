@@ -6,8 +6,8 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-public class FileHandler {
+import utils.contracts.FileRepository;
+public class FileHandler implements FileRepository {
 
     private Path dataDirectory;
 
@@ -20,6 +20,7 @@ public class FileHandler {
             return paths
                     .filter(Files::isRegularFile)
                     .map(path -> path.getFileName().toString())
+                    .sorted()
                     .collect(Collectors.toList());
         }
     }
