@@ -42,7 +42,7 @@ ROLE B – FileHandler (Kylan)
     Design Plan
     Constructor accepts a Path object representing the data directory.
     listFiles() returns a List<String> of all filenames in the directory.
-    readFileFromData(String filename) returns file contents as a String.
+    readFile(String filename) returns file contents as a String.
 
     Error Handling:
     If a file does not exist or cannot be accessed, IOException is thrown.
