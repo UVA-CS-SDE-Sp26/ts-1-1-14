@@ -26,22 +26,21 @@ public class Cipher {
         StringBuilder decrypted = new StringBuilder();
 
         for (int i = 0; i < encryptedText.length(); i++) {
-            decrypted.append(decryptCharacter(encryptedText.charAt(i)));
+            char current = encryptedText.charAt(i);
+
+            int indexLocation = cypherKey.indexOf(current);
+
+            if (indexLocation == -1) {
+                throw new IllegalArgumentException(
+                        "Decryption error at position " + i +
+                                ": character '" + current + "' not found in cipher key."
+                );
+            }
+
+            decrypted.append(normalKey.charAt(indexLocation));
         }
 
         return decrypted.toString();
-    }
-
-    // Private helper
-    private char decryptCharacter(char encryptedCharacter) {
-
-        int indexLocation = cypherKey.indexOf(encryptedCharacter);
-
-        if (indexLocation == -1) {
-            return encryptedCharacter;
-        }
-
-        return normalKey.charAt(indexLocation);
     }
 
     // Validation
