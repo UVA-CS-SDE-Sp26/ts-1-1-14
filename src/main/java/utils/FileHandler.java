@@ -15,7 +15,7 @@ public class FileHandler {
         return null;
     }
 
-    public static String readFileFromData(String filename){
+    public static String readFile(String filename){
         return null;
     }
 
