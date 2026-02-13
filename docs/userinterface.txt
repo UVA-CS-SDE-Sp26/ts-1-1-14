@@ -1,6 +1,11 @@
 USER INTERFACE DOCUMENTATION:
 -----------------------------
 
+How to Run:
+1. First compile classes with ./gradlew clean classes
+2. Run java -cp build/classes/java/main TopSecret
+(this command will be referred to as "java topsecret" in the rest of this documentation for brevity)
+
 Options:
 1. List all available files:
    Command: java topsecret
@@ -9,13 +14,14 @@ Options:
 2. Read a specific file (Default Cipher Key)
    Command: java topsecret [file_number]
    Example: java topsecret 01
-   Description: Deciphers and displays the contents of the specified file using the default key file.
+   Description: Deciphers and displays the contents of the specified file using the default key file in /ciphers.
 
 3. Read a specific file (Custom Key):
-   Command: java topsecret [file_number] [key]
-   Example: java topsecret 01 myCustomKey
-   Description: Deciphers and displays the contents of the file using the provided custom key file.
+   Command: java topsecret [file_number] [key file]
+   Example: java topsecret 01 myCustomKey.txt
+   Description: Deciphers and displays the contents of the file using the provided custom key file in /ciphers.
 
 Error Handling:
 -If the file number does not exist, an error message "File not found." will be displayed.
 -If too many arguments are provided, the program will display usage instructions.
+

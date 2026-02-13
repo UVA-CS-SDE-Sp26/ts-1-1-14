@@ -22,3 +22,6 @@ UserInterface:
 - Have 3 tests to ensure user interface works as designed (happy path tests)
 - edge case if more than two args are passed
 - edge case if invalid format is passed "abc" instead of "01" for instance
+
+How to test:
+Run tests with ./gradlew clean test or use test runner
