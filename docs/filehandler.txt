@@ -1,0 +1,115 @@
+** Homework 2 – Top Secret **
+Team Design Plan
+
+ROLE A – Command Line Interface (Ashish)
+
+    Objectives:
+    Implement the command line interface.
+
+    Depends on:
+    Role C (InterfaceBridge)
+
+    Design Plan:
+    The TopSecret main method parses command-line arguments and delegates execution to InterfaceBridge.
+
+    Command Behavior:
+    0 arguments: List all available files.
+    1 argument: Read file using default cipher.
+    2 arguments: Read file using custom cipher.
+    More than 2 arguments: Display error message.
+
+    Key Methods:
+    UserInterface(InterfaceBridge bridge)
+    Constructor that connects the command line interface to backend logic.
+
+    run(String[] args)
+    Handles command-line arguments:
+    0 args → bridge.getFilesForDisplay()
+    1 arg → bridge.requestFileContents(id, null)
+    2 args → bridge.requestFileContents(id, key)
+    Otherwise → display error
+
+ROLE B – FileHandler (Kylan)
+
+    Objectives:
+    Access and lists files from the /data directory.
+    Return file contents when requested.
+
+    Responsibility:
+    The FileHandler class handles all direct interaction with the file system.
+    No other class accesses files directly.
+
+    Design Plan
+    Constructor accepts a Path object representing the data directory.
+    listFiles() returns a List<String> of all filenames in the directory.
+    readFileFromData(String filename) returns file contents as a String.
+
+    Error Handling:
+    If a file does not exist or cannot be accessed, IOException is thrown.
+
+ROLE C – InterfaceBridge (Lamin)
+
+    Objectives:
+    Connect the command line interface (Role A) to FileHandler (Role B) and Cipher (Role D).
+    Document testing strategy in programcontrol.txt.
+
+    Depends on:
+    Role B (FileHandler)
+    Role D (Cipher)
+
+    Design Plan:
+    Class: InterfaceBridge
+
+    Methods:
+    requestFileContents(String selection, String cipherKey)
+        Converts selection (e.g., "01") to a filename.
+        Calls FileHandler to retrieve file contents.
+        Applies cipher if provided.
+
+        Handles errors:
+        Invalid selection
+        Invalid cipher
+        File not found
+
+    getFilesForDisplay()
+    Retrieves file list from FileHandler.
+    Formats numbered display string.
+    Handles directory access errors.
+
+ROLE D – Cipher (Sid)
+
+Objectives:
+Implement decryption functionality.
+Use /ciphers/key.txt for cipher mapping.
+
+Design Plan:
+    Constructor:
+    Reads two lines from key file:
+    normalKey
+    cipherKey
+    Validates:
+    Neither key is null
+    Both keys are same length
+    Both contain identical characters (sorted comparison)
+
+    Methods:
+        decryptCharacter(char encryptedCharacter)
+        If character not found in cipherKey → return unchanged.
+        Otherwise → return corresponding character from normalKey.
+
+        decryptText(String encryptedText)
+        Throws IllegalArgumentException if null.
+        Uses StringBuilder to decrypt entire text.
+        Returns decrypted String.
+
+    Dependencies:
+    Role B reads cipher file.
+    Role C passes key strings to Cipher.
+    Cipher only validates and decrypts.
+
+    Integration Rules:
+    Only FileHandler accesses the file system.
+    InterfaceBridge coordinates system logic.
+    UserInterface handles command parsing and display only.
+    Cipher handles validation and decryption only.
+    Exceptions propagate upward and are handled at the appropriate layer.
