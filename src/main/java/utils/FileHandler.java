@@ -1,7 +1,11 @@
 package utils;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileHandler {
 
@@ -11,14 +15,17 @@ public class FileHandler {
         this.dataDirectory = dataDirectory;
     }
 
-    public List<String> listFiles(){
-        return null;
+    public List<String> listFiles() throws IOException {
+        try (Stream<Path> paths = Files.list(dataDirectory)) {
+            return paths
+                    .filter(Files::isRegularFile)
+                    .map(path -> path.getFileName().toString())
+                    .collect(Collectors.toList());
+        }
     }
 
-    public static String readFile(String filename){
-        return null;
-    }
-
-    public void main() {
+    public String readFile(String filename) throws IOException {
+        Path filePath = dataDirectory.resolve(filename);
+        return Files.readString(filePath);
     }
 }
