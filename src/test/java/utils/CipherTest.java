@@ -1,7 +1,6 @@
 package utils;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CipherTest {
@@ -22,12 +21,11 @@ public class CipherTest {
         assertEquals("abc", c.decryptText("bcd"));
     }
 
-    // 2 (updated: spaces/punctuation are NOT in the key -> should throw)
+    // 2 (spaces + punctuation are unknown -> preserved)
     @Test
-    public void decrypt_shift_withSpacesAndPunctuation_throws() {
+    public void decrypt_shift_withSpacesAndPunctuation() {
         Cipher c = new Cipher(NORMAL, SHIFT1);
-        assertThrows(IllegalArgumentException.class,
-                () -> c.decryptText("b b!"));
+        assertEquals("a a!", c.decryptText("b b!"));
     }
 
     // 3
@@ -58,12 +56,11 @@ public class CipherTest {
         assertEquals("", c.decryptText(""));
     }
 
-    // 7 (updated: unknown characters should throw, not be preserved)
+    // 7 (unknown emoji preserved)
     @Test
-    public void decrypt_unknownCharacter_throws() {
+    public void decrypt_unknownCharacterPreserved() {
         Cipher c = new Cipher(NORMAL, SHIFT1);
-        assertThrows(IllegalArgumentException.class,
-                () -> c.decryptText("b🙂"));
+        assertEquals("a🙂", c.decryptText("b🙂"));
     }
 
     // 8
@@ -87,7 +84,7 @@ public class CipherTest {
         assertEquals("Hello1", c.decryptText("Ifmmp2"));
     }
 
-    // 11 (optional but recommended: your Cipher throws on null input)
+    // 11 (recommended: matches your Cipher.decryptText null check)
     @Test
     public void decrypt_nullText_throws() {
         Cipher c = new Cipher(NORMAL, SHIFT1);
